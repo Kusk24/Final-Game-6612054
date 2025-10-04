@@ -20,7 +20,11 @@ public class MenuController : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("Exiting game...");
-        Application.Quit();
+        Debug.Log("Exit called - only from button!");
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
